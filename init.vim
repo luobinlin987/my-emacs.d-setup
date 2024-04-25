@@ -17,6 +17,20 @@ Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
+
+Plug 'Julian/lean.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+
+" Optional Dependencies:
+
+Plug 'hrsh7th/nvim-cmp'        " For LSP completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/vim-vsnip'       " For snippets
+Plug 'andrewradev/switch.vim'  " For Lean switch support
+Plug 'tomtom/tcomment_vim'     " For commenting motions
+Plug 'nvim-telescope/telescope.nvim' " For Loogle search
 call plug#end()
 
 let g:Lf_PreviewInPopup = 1
@@ -250,6 +264,7 @@ nmap wj <C-w>j
 nmap wv <C-w>v
 nmap cl :close<CR>
 nmap nh :nohl<CR>
+nmap ;; :
 nmap <leader>t :terminal<CR>
 nmap ff <C-f>
 nmap bb <C-b>
@@ -276,7 +291,6 @@ set relativenumber
 set number
 set smartindent
 syntax on " This is required
-colorscheme gruvbox
 set background=dark
 set termguicolors
 set sw=4
@@ -296,3 +310,4 @@ if $NVM_BIN != ""
 endif
 set guioptions-=m
 set guioptions-=T
+autocmd vimenter * ++nested colorscheme gruvbox

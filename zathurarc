@@ -1,0 +1,18 @@
+set adjust-open "width"
+
+set default-bg \#ffffff
+
+set selection-clipboard clipboard
+
+set font 'monospace normal 9'
+
+set synctex true
+
+set synctex-editor-command "emacsclient +%{line} %{input}"
+
+set guioptions vs
+
+map h navigate previous
+map l navigate next
+
+set scroll-step 200

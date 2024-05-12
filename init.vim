@@ -18,6 +18,10 @@ Plug 'SirVer/ultisnips'
 
 Plug 'honza/vim-snippets'
 
+Plug 'dpezto/gnuplot.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'Julian/lean.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -31,6 +35,7 @@ Plug 'hrsh7th/vim-vsnip'       " For snippets
 Plug 'andrewradev/switch.vim'  " For Lean switch support
 Plug 'tomtom/tcomment_vim'     " For commenting motions
 Plug 'nvim-telescope/telescope.nvim' " For Loogle search
+
 call plug#end()
 
 let g:Lf_PreviewInPopup = 1
@@ -262,7 +267,8 @@ nmap wl <C-w>l
 nmap wk <C-w>k
 nmap wj <C-w>j
 nmap wv <C-w>v
-nmap cl :close<CR>
+nmap <leader>c :close<CR>
+nmap <leader>o :only<CR>
 nmap nh :nohl<CR>
 nmap ;; :
 nmap <leader>t :terminal<CR>
@@ -271,6 +277,7 @@ nmap bb <C-b>
 nmap bn :bn<CR>
 nmap bp :bp<CR>
 nmap bd :bd<CR>
+nmap ba :badd 
 nmap <leader>f :Leaderf file<CR>
 nmap <leader>b :Leaderf buffer<CR>
 nmap <leader>l :Leaderf line<CR>
@@ -280,8 +287,6 @@ tmap wh <C-w>h
 tmap wj <C-w>j
 tmap wk <C-w>k
 nmap rs :%s/
-imap ,, <<
-imap .. >>
 
 " Other setting
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -293,8 +298,8 @@ set smartindent
 syntax on " This is required
 set background=dark
 set termguicolors
-set sw=4
-set ts=4
+set sw=2
+set ts=2
 filetype indent on
 set autoindent
 let s:extfname = expand("%:e")
@@ -311,3 +316,16 @@ endif
 set guioptions-=m
 set guioptions-=T
 autocmd vimenter * ++nested colorscheme gruvbox
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true,
+		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+			-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+			-- Using this option may slow down your editor, and you may see some duplicate highlights.
+			-- Instead of true it can also be a list of languages
+			additional_vim_regex_highlighting = false,
+	},
+}
+EOF

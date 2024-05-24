@@ -1,14 +1,12 @@
 ;;; package --- Summary
 ;;; Commentary:
-
 ;;; Codes:
 (require 'package)
 (setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-(package-initialize) ;; You might already have this line
-
-(setq confirm-kill-emacs #'yes-or-no-p)      ; 在关闭 Emacs 前询问是否确认关闭，防止误触
+(add-to-list 'package-archives '("melpa2" . "http://melpa.org/packages/"))
+(package-initialize) ;; You might already have this line (setq confirm-kill-emacs #'yes-or-no-p)      ; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t)                       ; 自动补全括号
 (add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
 (column-number-mode t)                       ; 在 Mode line 上显示列号
@@ -32,14 +30,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
  '(custom-safe-themes
    '("f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "f079ef5189f9738cf5a2b4507bcaf83138ad22d9c9e32a537d61c9aae25502ef" default))
- '(display-line-numbers-type 'relative)
- '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(auctex biblio ebib magit flycheck company-box company rainbow-delimiters highlight-symbol dashboard avy which-key amx counsel swiper))
- '(tool-bar-mode nil))
+   '(gnuplot-mode key-chord auctex biblio ebib magit flycheck company-box company rainbow-delimiters highlight-symbol dashboard avy which-key amx counsel swiper)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -142,6 +136,9 @@
   :ensure t)
 
 (use-package biblio
+  :ensure t)
+
+(use-package gnuplot-mode
   :ensure t)
 
 (use-package key-chord

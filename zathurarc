@@ -16,3 +16,5 @@ map h navigate previous
 map l navigate next
 
 set scroll-step 200
+
+map D set "first-page-column 1:1"
